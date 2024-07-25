@@ -1,0 +1,44 @@
+﻿@page
+@model Homework5_CV.Pages.AllModel
+@{
+    ViewData["Title"] = "All CVs";
+}
+
+<h1 class="text-center">All CVs</h1>
+
+@if (Model.CVs != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birthday</th>
+                <th>Nationality</th>
+                <th>Sex</th>
+                <th>Skills</th>
+                <th>Email</th>
+                <th>Photo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cv in Model.CVs)
+            {
+                <tr>
+                    <td>@cv.FirstName</td>
+                    <td>@cv.LastName</td>
+                    <td>@cv.Birthday.ToShortDateString()</td>
+                    <td>@cv.Nationality</td>
+                    <td>@cv.Sex</td>
+                    <td>@cv.Skills</td>
+                    <td>@cv.Email</td>
+                    <td>@cv.PhotoUrl</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No CVs found.</p>
+}

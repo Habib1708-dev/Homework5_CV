@@ -1,0 +1,98 @@
+﻿@page
+@model Homework5_CV.Pages.CVModel
+ @{
+    ViewData["Title"] = "CV";
+}
+ 
+<h1>Create Your CV</h1>
+
+<form method="post" enctype="multipart/form-data"> 
+    <div class="form-group">
+        <label asp-for="view.FirstName"></label>
+        <input name="FirstName" asp-for="view.FirstName" class="form-control" />
+        <span asp-validation-for="view.FirstName" data-valmsg-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="view.LastName"></label>
+        <input name="LastName" asp-for="view.LastName" class="form-control" />
+        <span asp-validation-for="view.LastName" data-valmsg-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="view.Birthday"></label>
+        <input name="Birthday" asp-for="view.Birthday" class="form-control" />
+        <span asp-validation-for="view.Birthday" data-valmsg-for="Birthday" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="input.Nationality"></label>
+        <select name="Nationality" asp-for="input.Nationality" class="form-control" asp-items="Model.Nationalities"></select>
+        <span asp-validation-for="input.Nationality" data-valmsg-for="Nationality" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="view.Sex"></label><br />
+        <input name="Sex" type="radio" class="form-check-input" asp-for="view.Sex" value="Male" />&nbsp;Male &nbsp;
+        <input name="Sex" type="radio" class="form-check-input" asp-for="view.Sex" value="Female" />&nbsp;Female
+        <span asp-validation-for="view.Sex" data-valmsg-for="Sex" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Skills</label><br />
+        @foreach (var skill in Model.SkillsList)
+        {
+            <input type="checkbox" name="Skills" value="@skill.Value" class="form-check-input" />
+            <label class="form-check-label">@skill.Text</label>
+            <br />
+        }
+        <span asp-validation-for="input.Skills" data-valmsg-for="Skills" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="view.Email"></label>
+        <input name="Email" asp-for="view.Email" class="form-control" />
+        <span asp-validation-for="view.Email" data-valmsg-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="view.EmailConfirm"></label>
+        <input name="EmailConfirm" asp-for="view.EmailConfirm" class="form-control" />
+        <span asp-validation-for="view.EmailConfirm" data-valmsg-for="EmailConfirm" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="view.Password"></label>
+        <input name="Password" asp-for="view.Password" class="form-control" />
+        <span asp-validation-for="view.Password" data-valmsg-for="Password" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="view.Val1"></label>+
+        <label asp-for="view.Val2"></label>=
+        <label asp-for="view.Val3"></label><br/>
+        <input name="val1" asp-for="view.Val1" />
+        +
+        <input name="val2" asp-for="view.Val2" />
+        =
+        <input name="val3" asp-for="view.Val3" />
+        <span asp-validation-for="view.Val1" data-valmsg-for="val1" class="text-danger"></span>
+        <span asp-validation-for="view.Val2" data-valmsg-for="val2" class="text-danger"></span>
+        <span asp-validation-for="view.Val3" data-valmsg-for="val3" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="view.Photo"></label>
+        <input type="file" name="Photo" asp-for="view.Photo" class="form-control" />
+        <span asp-validation-for="view.Photo" data-valmsg-for="Photo" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@section Scripts {
+    @Html.Partial("_ValidationScriptsPartial")
+}

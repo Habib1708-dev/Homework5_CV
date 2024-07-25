@@ -1,0 +1,22 @@
+﻿@page "{id:int}"
+@model Homework5_CV.Pages.SummaryModel
+@{
+    ViewData["Title"] = "CV Summary";
+}
+<h1 class="text-center">CV Summary</h1><br>
+@if (Model.CV != null)
+{
+    <div>
+        <h2>@Model.CV.FirstName @Model.CV.LastName</h2>
+        <p><strong>Birthday:</strong> @Model.CV.Birthday.ToShortDateString()</p>
+        <p><strong>Nationality:</strong> @Model.CV.Nationality</p>
+        <p><strong>Sex:</strong> @Model.CV.Sex</p>
+        <p><strong>Skills:</strong> @Model.CV.Skills</p>
+        <p><strong>Email:</strong> @Model.CV.Email</p>
+        <p><strong>Photo:</strong>@Model.CV.PhotoUrl</p>
+    </div>
+}
+else
+{
+    <p>CV not found.</p>
+}
